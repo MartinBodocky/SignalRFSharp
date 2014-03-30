@@ -10,10 +10,10 @@ open System.Diagnostics
 open EkonBenefits.FSharp.Dynamic
 
 
-type MyHub =
-    inherit Hub
-    member x.Send (name : string) (message : string) =
-        base.Clients.All?addMessage(name,message) |> ignore
+type MyHub() as this =
+    inherit Hub()
+    member x.Send (name : string) (message : string) = 
+        this.Clients.All?addMessage(name,message) |> ignore
 (*
 type MyHub =
     inherit Hub
